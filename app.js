@@ -1,5 +1,6 @@
 
-function formatDate(){let now = new Date();
+
+let now = new Date();
 let h2 = document.querySelector("h2");
 let days = [
   "Sunday",
@@ -17,7 +18,7 @@ let hour = now.getHours();if (hour < 10) {
 let minutes = now.getMinutes();if (minutes < 10) {
   minutes = `0${minutes}`;
 }
-h2.innerHTML = `${day}| ${hour}:${minutes}`;}
+h2.innerHTML = `${day}| ${hour}:${minutes}`
 
 
 function displayWeatherCondition(response){
