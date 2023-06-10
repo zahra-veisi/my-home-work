@@ -22,7 +22,7 @@ h2.innerHTML = `${day}| ${hour}:${minutes}`
 
 
 function displayWeatherCondition(response){
-  console.log(response.data)
+  celsiusTemperature = response.data.main.temp;
   document.querySelector("#city").innerHTML=response.data.name;
   document.querySelector("#temperature").innerHTML=Math.round(response.data.main.temp)
   document.querySelector("#humidity").innerHTML=response.data.main.humidity;
@@ -39,7 +39,7 @@ function displayWeatherCondition(response){
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
   getForecast(response.data.coord);
-let celciusTemperature=response.data.main.temp;
+
 }
 
 function search(city) {

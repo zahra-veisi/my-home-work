@@ -75,6 +75,7 @@ margin-left: 10px;
   color: black;
   cursor: default;
 }
- .active:hover{
-  text-decoration: none;
+  .active:hover{
+
+  text-decoration:none;
 }
