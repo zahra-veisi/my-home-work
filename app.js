@@ -1,24 +1,69 @@
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  
+  let h2 = document.querySelector("h2");
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
 
-let now = new Date();
-let h2 = document.querySelector("h2");
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
-let day = days[now.getDay()];
-let hour = now.getHours();if (hour < 10) {
-  hour = `0${hour}`;
+  h2.innerHTML = `${day}| ${hours}:${minutes}`;}
+
+function dateFormat(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  return days[day];
 }
-let minutes = now.getMinutes();if (minutes < 10) {
-  minutes = `0${minutes}`;
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  //let days = ["Thu", "Fri", "Sat"];
+  forecast.forEach(function (day, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        ` 
+      <div class="col-2">
+                <div class="forcast-date">${dateFormat(day.dt)}</div>
+                <img src="http://openweathermap.org/img/wn/${
+                  day.weather[0].icon
+                }@2x.png" alt="" width="42" />
+                <div class="forecast-temp">
+                  <span class="max-temp">${Math.round(day.temp.max)}°</span>
+                  <span class="min-temp">${Math.round(day.temp.min)}°</span>
+                </div>
+              </div>
+              `;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
-h2.innerHTML = `${day}| ${hour}:${minutes}`
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "dff5c692192605ee5ed7f95b423ae857";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 
 function displayWeatherCondition(response){
