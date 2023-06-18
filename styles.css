@@ -18,6 +18,12 @@ body {
     line-height: 28px;
     margin: 0;
   }
+  .form-control{
+    background: none;
+    border:2px solid black ;
+    margin: 1px;
+    padding: 6px;
+  }
   
   ul {
     margin: 0 0 10px;
