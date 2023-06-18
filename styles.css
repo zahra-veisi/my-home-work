@@ -1,13 +1,13 @@
 body {
    margin: 10px auto;
    padding: 10px;
-   border: 10px solid black;
+   border: 3px solid black;
     font-family: arial, sans-serif;
-    background-image:url('https://bgtop.ir/wp-content/uploads/edd/2019/01/Flying-Above-Clouds-472x267.jpg');
+    background-image: url("https://ghab24.com/movafaghiat/media/appmedia/image/5536_uhd.jpg");
     background-size: 100% 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    border: 1px solid black;
+    color:black;
     max-width: 600px;
 }
   
@@ -64,6 +64,7 @@ body {
 .card {
   background: none;
 }
+
 .footer{
 text-align: center;
 
