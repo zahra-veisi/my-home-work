@@ -78,7 +78,8 @@ function displayWeatherCondition(response){
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
- 
+  celsiusLink.classList.remove("active");
+fahrenheitLink.classList.add("active");
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
